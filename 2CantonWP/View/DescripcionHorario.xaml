@@ -1,0 +1,89 @@
+﻿<Page
+    x:Class="_2CantonWP.View.DescripcionHorario"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_2CantonWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/iglesia.png" Stretch="UniformToFill" Opacity="0.8"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border 
+             Grid.Row="0"
+                Width="Auto" 
+                Height="Auto" 
+                Margin="5"
+                Background="Black" 
+                CornerRadius="15"  
+                Opacity="0.7">
+
+            <TextBlock
+            
+            Name="nombreRutaDia"
+            Text="Lunes a Viernes"
+            Style="{ThemeResource HeaderTextBlockStyle}"
+            FontSize="25"
+            VerticalAlignment="Center"
+            TextWrapping="Wrap"
+            Margin="15,0,0,5"/>
+        </Border>
+
+
+        <Border 
+             Grid.Row="1"
+                Width="Auto" 
+                Height="Auto" 
+                Margin="5"
+                Background="Black" 
+                CornerRadius="15"  
+                Opacity="0.7">
+
+            <Grid
+                Name="grdHorario">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                Grid.Column="0"
+                Grid.Row="0"
+                Text="Sitio de Salida" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"/>
+
+                <TextBlock
+                Grid.Column="1"
+                Grid.Row="0"
+                Text="Hora" 
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"/>
+
+
+
+            </Grid>
+        </Border>
+
+        <ProgressRing 
+            Name="progressRing" 
+            Grid.Row="1" 
+            Background="Transparent" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"/>
+
+    </Grid>
+</Page>

@@ -1,0 +1,61 @@
+﻿<Page
+    x:Class="_2CantonWP.View.Historia"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_2CantonWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.Background>
+            <ImageBrush ImageSource="ms-appx:///Assets/iglesia.png" Stretch="UniformToFill" Opacity="0.8"/>
+        </Grid.Background>
+        <Grid.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </Grid.ChildrenTransitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Border 
+                Width="Auto" 
+                Height="Auto" 
+                Margin="5"
+                Background="Black" 
+                CornerRadius="15"  
+                Opacity="0.7">
+            <!-- Title Panel -->
+            <StackPanel Grid.Row="0" Margin="19,0,0,0" >
+
+                <TextBlock Text="Puriscal" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,12,0,0"/>
+                <TextBlock Text="Historia" Margin="0,-6.5,0,26.5" Style="{ThemeResource HeaderTextBlockStyle}" CharacterSpacing="{ThemeResource PivotHeaderItemCharacterSpacing}"/>
+            </StackPanel>
+        </Border>
+
+        <!--TODO: Content should be placed within the following grid-->
+
+        <Border Grid.Row="1"
+                Width="Auto" 
+                Height="Auto" 
+                Margin="5"
+                Background="Black" 
+                CornerRadius="15"  
+                Opacity="0.7">
+            <ScrollViewer  HorizontalAlignment="Left"  x:Name="ContentRoot" Margin="19,9.5,19,0"  VerticalAlignment="Top" >
+                <TextBlock 
+                    Name="txtvHistoria"
+                    TextWrapping="Wrap"
+                    FontSize="20"
+                    Text="Lorem"/>
+
+            </ScrollViewer>
+        </Border>
+
+    </Grid>
+</Page>

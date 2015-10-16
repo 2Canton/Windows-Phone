@@ -1,0 +1,166 @@
+﻿<Page
+    x:Class="_2CantonWP.View.Eventos"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_2CantonWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia.png"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Text="Puriscal"
+            Style="{ThemeResource HeaderTextBlockStyle}"
+            Margin="15,0,0,0"/>
+
+        <ProgressRing 
+            Name="progressRing" 
+            Grid.Row="1" 
+            Background="Transparent" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"/>
+
+        <ListView 
+            x:Name="lstvRutas" 
+            Grid.Row="1"
+            Margin="0,20" 
+            IsItemClickEnabled="True" 
+            ItemClick="lstvRutas_ItemClick" >
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+
+                    <Border 
+                        Width="Auto" 
+                        Height="Auto" 
+                        Margin="5"
+                        Background="Black" 
+                        CornerRadius="15" 
+                        Padding="10"
+                        Opacity="0.7">
+
+                        <Grid
+                            Width="400"
+                            Height="Auto" >
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+
+                            <Image 
+                                Grid.Column="0"
+                                Height="75" 
+                                Width="75" 
+                                Source="{Binding UrlImagen}" 
+                                Stretch="UniformToFill"
+                                Margin="10,0,10,0"/>
+
+                            <Grid
+                                Grid.Column="1">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <TextBlock 
+                                    Grid.Column="1"
+                                    Grid.Row="0"
+                                    Text="{Binding Nombre}" 
+                                    TextTrimming="WordEllipsis"
+                                    TextWrapping="Wrap"
+                                    FontSize="18"/>
+                                <Grid
+                                     Grid.Column="1"
+                                     Grid.Row="1"
+                                     Grid.RowSpan="2">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+
+                                    <TextBlock 
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        TextTrimming="WordEllipsis"
+                                        TextWrapping="Wrap"                             
+                                        FontSize="13" > 
+                                        <Run Text="Fecha: " />
+                                        <Run Text="{Binding Path=Fecha}" />
+                                    </TextBlock>
+
+                                    <TextBlock 
+                                        Grid.Column="1"
+                                        Grid.Row="0"
+                                        TextTrimming="WordEllipsis"
+                                        TextWrapping="Wrap"                             
+                                        FontSize="13"  >
+                                        <Run Text="Hora: " />
+                                        <Run Text="{Binding Path=Hora}" />
+                                    </TextBlock>
+
+                                    <TextBlock 
+                                        Grid.ColumnSpan="2"
+                                        Grid.Column="0"
+                                        Grid.Row="1"
+                                        TextTrimming="WordEllipsis"
+                                        TextWrapping="Wrap"
+                                        FontSize="13">  
+                            
+                                        <Run Text="Costo: " />
+                                        <Run Text="{Binding Path=Costo}" />
+
+                                    </TextBlock>
+
+                                    <TextBlock 
+                                        Grid.ColumnSpan="2"
+                                        Grid.Column="0"
+                                        Grid.Row="2"
+                                        TextTrimming="WordEllipsis"
+                                        TextWrapping="Wrap"
+                                        FontSize="13"
+                                        Text="{Binding Descripcion}">  
+
+                                    </TextBlock>
+
+                                </Grid>
+                                
+                            </Grid>
+
+                        </Grid>
+
+                    </Border>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+
+   
+</Page>

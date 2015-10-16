@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="_2CantonWP.View.Horarios"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_2CantonWP.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ContentControl x:Key="MyContent"
+                ContentTemplate="{StaticResource itemLista}" />
+
+
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia.png"/>
+        </Grid.Background>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            Grid.Row="0"
+            Text="Puriscal"
+            Style="{ThemeResource HeaderTextBlockStyle}"
+            Margin="15,0,0,0"/>
+
+        <ProgressRing 
+            Name="progressRing" 
+            Grid.Row="1" 
+            Background="Transparent" 
+            VerticalAlignment="Center" 
+            HorizontalAlignment="Center"/>
+
+        <ListView 
+            x:Name="lstvRutas" 
+            ItemTemplate="{StaticResource itemLista}"
+            Grid.Row="1"
+            Margin="0,20" 
+            IsItemClickEnabled="True" ItemClick="lstvRutas_ItemClick" />
+
+    </Grid>
+</Page>
