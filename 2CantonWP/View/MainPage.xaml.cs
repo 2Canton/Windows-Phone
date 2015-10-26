@@ -42,8 +42,8 @@ namespace _2CantonWP
             obcOpciones.Add(new Opcion() { Id = 2, Nombre = "Sitios de interés", UrlImagen = "ms-appx:///Assets/building.png" });
             obcOpciones.Add(new Opcion() { Id = 3, Nombre = "Eventos", UrlImagen = "ms-appx:///Assets/event.png" });
             obcOpciones.Add(new Opcion() { Id = 4, Nombre = "Religión", UrlImagen = "ms-appx:///Assets/church.png" });
-            obcOpciones.Add(new Opcion() { Id = 5, Nombre = "Recolección de basura", UrlImagen = "ms-appx:///Assets/trash.png" });
-            obcOpciones.Add(new Opcion() { Id = 6, Nombre = "Noticias", UrlImagen = "ms-appx:///Assets/news.png" });
+            //obcOpciones.Add(new Opcion() { Id = 5, Nombre = "Recolección de basura", UrlImagen = "ms-appx:///Assets/trash.png" });
+           // obcOpciones.Add(new Opcion() { Id = 6, Nombre = "Noticias", UrlImagen = "ms-appx:///Assets/news.png" });
             obcOpciones.Add(new Opcion() { Id = 7, Nombre = "Facebook", UrlImagen = "ms-appx:///Assets/facebook.png" });
             obcOpciones.Add(new Opcion() { Id = 8, Nombre = "Sitio Web", UrlImagen = "ms-appx:///Assets/website.png" });
             obcOpciones.Add(new Opcion() { Id = 9, Nombre = "Contacto", UrlImagen = "ms-appx:///Assets/message.png" });
@@ -73,7 +73,8 @@ namespace _2CantonWP
                     break;
 
                 case 4:
-                    this.Frame.Navigate(typeof(View.TipoReligion));
+                    // this.Frame.Navigate(typeof(View.TipoReligion));
+                    Frame.Navigate(typeof(View.HorarioReligion));
                     break;
 
                 case 5:

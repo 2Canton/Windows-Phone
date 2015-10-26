@@ -47,10 +47,17 @@
                 CornerRadius="15"  
                 Opacity="0.7">
 
+          
             <Grid
                 Name="grdHorario">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="30"/>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
                     <RowDefinition />
@@ -64,205 +71,207 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
-                    <ColumnDefinition />
                 </Grid.ColumnDefinitions>
+                
+                <TextBlock
+                    Grid.Row="0"
+                    Grid.ColumnSpan="3"
+                    FontSize="25"
+                    Text="Lunes a Viernes"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Column="0"
-                    Grid.Row="0"
-                    Text="Día" 
+                    Grid.Row="1"
+                    Text="Lugar"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Column="1"
-                    Grid.Row="0"
+                    Grid.Row="1"
+                    Text="Hora" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="Capilla (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    Text="07:00 am"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="Templo (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="3"
+                    Text="06:00 pm"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.ColumnSpan="3"
+                    FontSize="25"
+                    Text="Sábado"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Text="Lugar"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="5"
                     Text="Hora" 
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="0"
-                    Text="Lugar" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
                     Grid.Column="0"
-                    Grid.Row="1"
-                    Text="Lunes a Viernes" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    Text="8:00 am" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="1"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="0"
-                    Grid.Row="2"
-                    Text="Lunes a Viernes" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="1"
-                    Grid.Row="2"
-                    Text="6:00pm" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="2"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="0"
-                    Grid.Row="3"
-                    Text="Sábado" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="1"
-                    Grid.Row="3"
-                    Text="8:00am" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="3"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Text="Domingo" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="1"
-                    Grid.Row="4"
-                    Text="6:30am" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="4"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-
-                <TextBlock
-                    Grid.Row="5"
-                    Grid.Column="0"
-                    Text="Domingo" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="1"
-                    Grid.Row="5"
-                    Text="8:00am" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="5"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-
-                <TextBlock
                     Grid.Row="6"
-                    Grid.Column="0"
-                    Text="Domingo" 
+                    Text="Templo (Santiago)"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Column="1"
                     Grid.Row="6"
-                    Text="10:00am" 
+                    Text="08:00 am"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="6"
-                    Text="Santiago" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-
-                <TextBlock
-                    Grid.Row="7"
                     Grid.Column="0"
-                    Text="Domingo" 
+                    Grid.Row="7"
+                    Text="Templo (Santiago)"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Column="1"
                     Grid.Row="7"
-                    Text="4:00pm" 
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Center"/>
-
-                <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="7"
-                    Text="Santiago" 
+                    Text="06:30 pm"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Row="8"
+                    Grid.ColumnSpan="3"
+                    FontSize="25"
+                    Text="Domingo"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
                     Grid.Column="0"
-                    Text="Domingo" 
+                    Grid.Row="9"
+                    Text="Lugar"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
                     Grid.Column="1"
-                    Grid.Row="8"
-                    Text="6:30pm" 
+                    Grid.Row="9"
+                    Text="Hora" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="10"
+                    Text="Templo (Santiago)"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
                 <TextBlock
-                    Grid.Column="2"
-                    Grid.Row="8"
-                    Text="Santiago" 
+                    Grid.Column="1"
+                    Grid.Row="10"
+                    Text="06:30 am"
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center"/>
 
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="11"
+                    Text="Templo (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
 
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="11"
+                    Text="08:00 am"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="12"
+                    Text="Templo (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="12"
+                    Text="10:00 am"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="13"
+                    Text="Templo (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="13"
+                    Text="04:00 pm"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="0"
+                    Grid.Row="14"
+                    Text="Templo (Santiago)"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
+
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="14"
+                    Text="06:30 pm"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"/>
 
 
             </Grid>
+
+           
+
         </Border>
 
         <ProgressRing 
