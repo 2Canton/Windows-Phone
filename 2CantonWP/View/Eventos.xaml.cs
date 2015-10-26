@@ -26,6 +26,9 @@ namespace _2CantonWP.View
     /// </summary>
     public sealed partial class Eventos : Page
     {
+
+        string idTipoEventos;
+
         public Eventos()
         {
             this.InitializeComponent();
@@ -33,8 +36,12 @@ namespace _2CantonWP.View
 
         private async void cargarDatos(string pIdTipoEmpresa)
         {
+            idTipoEventos = pIdTipoEmpresa;
+
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
+
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
                 getRutas(pIdTipoEmpresa);
@@ -45,6 +52,11 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                txtError.Text = "¡Vaya ha ocurrido un error al cargar, verifica la conexión a internet e intenta de nuevo";
+                gridError.Visibility = Visibility.Visible;
+
+                
             }
         }
 
@@ -59,7 +71,11 @@ namespace _2CantonWP.View
 
                 IEnumerable<Model.Evento> lstRutas = await query.ToListAsync();
 
-
+                if (lstRutas.Count() == 0)
+                {
+                    txtError.Text = "¡Vaya parece que aún no hay datos en esta categoría!\nAnúnciese con nosotros info@mipuribus.com";
+                    gridError.Visibility = Visibility.Visible;
+                }
 
 
                 lstvRutas.ItemsSource = lstRutas;
@@ -93,6 +109,11 @@ namespace _2CantonWP.View
         private void lstvRutas_ItemClick(object sender, ItemClickEventArgs e)
         {
 
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos(idTipoEventos);
         }
     }
 }

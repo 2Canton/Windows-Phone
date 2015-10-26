@@ -178,12 +178,14 @@
     <Content Include="Assets\facebook.png" />
     <Content Include="Assets\history.png" />
     <Content Include="Assets\iglesia.png" />
+    <Content Include="Assets\iglesia2.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\map.png" />
     <Content Include="Assets\message.png" />
     <Content Include="Assets\news.png" />
     <Content Include="Assets\phone.png" />
     <Content Include="Assets\routes.png" />
+    <Content Include="Assets\sad.png" />
     <Content Include="Assets\SDK\download.png" />
     <Content Include="Assets\SDK\edit.png" />
     <Content Include="Assets\SDK\microphone.png" />

@@ -28,6 +28,9 @@ namespace _2CantonWP.View
     /// </summary>
     public sealed partial class DescripcionHorario : Page
     {
+        string idRuta;
+        string idHorario;
+
         public DescripcionHorario()
         {
             this.InitializeComponent();
@@ -35,8 +38,13 @@ namespace _2CantonWP.View
 
         private async void cargarDatos(string pIdRuta, string pIdHorario)
         {
+            idRuta = pIdRuta;
+            idHorario = pIdHorario;
+
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
+
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
 
@@ -48,6 +56,8 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                gridError.Visibility = Visibility.Visible;
             }
         }
 
@@ -56,6 +66,11 @@ namespace _2CantonWP.View
             IMobileServiceTable<CarreraRuta> tableCarreraRuta = App.clientMobileService.GetTable<CarreraRuta>();
 
             List<CarreraRuta> lstHorarios = await tableCarreraRuta.Where(e => e.idRuta == pIdRuta && e.idHorario == pIdHorario).OrderBy(e => e.hora).ToListAsync();
+
+            if (lstHorarios.Count() == 0)
+            {
+                gridError.Visibility = Visibility.Visible;
+            }
 
             TextBlock txtParada;
             TextBlock txtHora;
@@ -150,6 +165,11 @@ namespace _2CantonWP.View
             {
                 cargarDatos(objRutaHorario.idRuta, objRutaHorario.idHorario);
             }
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos(idRuta,idHorario);
         }
     }
 }

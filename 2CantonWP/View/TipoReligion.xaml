@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia2.png"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>

@@ -18,7 +18,7 @@
         Name="container"
         Margin="0,0,0,30" >
         <Grid.Background>
-            <ImageBrush ImageSource="ms-appx:///Assets/iglesia.png" Stretch="UniformToFill" Opacity="0.8"/>
+            <ImageBrush ImageSource="ms-appx:///Assets/iglesia2.png" Stretch="UniformToFill" Opacity="0.8"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>

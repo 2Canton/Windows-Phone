@@ -37,6 +37,8 @@ namespace _2CantonWP.View
         {
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
+
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
                 getRutas();
@@ -47,6 +49,8 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                gridError.Visibility = Visibility.Visible;
             }
         }
 
@@ -60,6 +64,12 @@ namespace _2CantonWP.View
                 IMobileServiceTableQuery<TipoEvento> query = tipoEventoTable.OrderBy(e => e.Nombre);
 
                 IEnumerable<TipoEvento> lstTipoEvento = await query.ToListAsync();
+
+                if (lstTipoEvento.Count() == 0)
+                {
+                    
+                    gridError.Visibility = Visibility.Visible;
+                }
 
                 lstvRutas.ItemsSource = lstTipoEvento;
                 progressRing.IsActive = false;
@@ -79,27 +89,19 @@ namespace _2CantonWP.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            if (!string.IsNullOrEmpty(e.Parameter.ToString()))
-            {
-                // verificamos si se activo por voz
-                if (e.NavigationMode == NavigationMode.New)
-                {
-                    var result = e.Parameter as SpeechRecognitionResult;
-                    var semanticProp = result.SemanticInterpretation.Properties;
-                    HandleSpeech(semanticProp["race"][0], semanticProp["commandMode"][0]);
-                }
-            }
+           
         }
 
-        private void HandleSpeech(object searchTerm, string commandMode)
-        {
-
-        }
 
         private void lstvRutas_ItemClick(object sender, ItemClickEventArgs e)
         {
             TipoEvento objEmpresa = e.ClickedItem as TipoEvento;
             this.Frame.Navigate(typeof(Eventos), objEmpresa.Id);
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos();
         }
     }
 }

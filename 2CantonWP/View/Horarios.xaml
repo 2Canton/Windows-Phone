@@ -18,7 +18,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia.png"/>
+            <ImageBrush Stretch="UniformToFill" ImageSource="ms-appx:///Assets/iglesia2.png"/>
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -46,5 +46,38 @@
             Margin="0,20" 
             IsItemClickEnabled="True" ItemClick="lstvRutas_ItemClick" />
 
+        <Grid
+            Name="gridError"
+            Visibility="Collapsed"
+            Grid.Row="1"
+            Background="Black"
+            Opacity="0.7">
+
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+
+            <Image 
+               Grid.Row="0"
+               Source="ms-appx:///Assets/sad.png"
+               Width="150" />
+
+            <TextBlock
+                TextWrapping="Wrap"
+                TextAlignment="Center"
+                Text="¡Vaya ha ocurrido un error al cargar, verifica la conexión a internet e intenta de nuevo" FontSize="21.333" Margin="10,375,-10,40" />
+
+
+        </Grid>
+
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="btnRefresh" Label="Actualizar" Icon="Refresh"  Click="btnRefresh_Click" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    
 </Page>

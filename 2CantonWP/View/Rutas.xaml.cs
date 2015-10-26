@@ -38,6 +38,8 @@ namespace _2CantonWP.View
         {
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
+
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
                 getRutas();
@@ -48,6 +50,8 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                gridError.Visibility = Visibility.Visible;
             }
         }
 
@@ -82,6 +86,11 @@ namespace _2CantonWP.View
 
                 lstvRutas.ItemsSource = lstRutas;
                 progressRing.IsActive = false;
+
+                if (lstRutas.Count() == 0)
+                {
+                    gridError.Visibility = Visibility.Visible;
+                }
             }
             catch (Exception)
             {
@@ -113,6 +122,11 @@ namespace _2CantonWP.View
         {
             
             this.Frame.Navigate(typeof(Horarios), pIdRuta);
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos();
         }
     }
 }

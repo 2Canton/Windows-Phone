@@ -37,6 +37,7 @@ namespace _2CantonWP.View
         {
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
                 idRuta = pIdRuta;
@@ -48,6 +49,8 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                gridError.Visibility = Visibility.Visible;
             }
         }
 
@@ -61,78 +64,81 @@ namespace _2CantonWP.View
 
             if (!string.IsNullOrEmpty(e.Parameter.ToString()))
             {
-                // verificamos si se activo por voz
-                if (e.NavigationMode == NavigationMode.New)
+                try
                 {
-                    var result = e.Parameter as SpeechRecognitionResult;
-                    string idRuta = "1";
+                   
+                        var result = e.Parameter as SpeechRecognitionResult;
+                        string idRuta = "1";
 
-                    switch (result.Text)
+                        switch (result.Text)
+                        {
+                            case "Ruta Desamparaditos":
+                                idRuta = "149";
+                                break;
+
+                            case "Ruta Grifo Alto":
+                                idRuta = "150";
+                                break;
+
+                            case "Ruta La Legua":
+                                idRuta = "169";
+                                break;
+
+                            case "Ruta Mercedes Norte":
+                                idRuta = "3";
+                                break;
+
+                            case "Ruta Polka":
+                                idRuta = "151";
+                                break;
+
+                            case "Ruta Pozos":
+                                idRuta = "148";
+                                break;
+
+                            case "Ruta San Juan":
+                                idRuta = "1";
+                                break;
+
+                            case "Ruta San Rafael":
+                                idRuta = "2";
+                                break;
+
+                            case "Ruta San Ramón":
+                                idRuta = "171";
+                                break;
+
+                            case "Ruta Turrubares":
+                                idRuta = "152";
+                                break;
+
+                            case "Ruta Zapatón":
+                                idRuta = "198";
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        cargarDatos(idRuta);
+
+                    
+                
+                }
+                catch (Exception)
+                {
+
+                    string pidRuta = e.Parameter as string;
+
+                    if (!string.IsNullOrWhiteSpace(pidRuta))
                     {
-                        case "Ruta Desamparaditos":
-                            idRuta = "149";
-                            break;
 
-                        case "Ruta Grifo Alto":
-                            idRuta = "150";
-                            break;
+                        cargarDatos(pidRuta);
 
-                        case "Ruta La Legua":
-                            idRuta = "169";
-                            break;
-
-                        case "Ruta Mercedes Norte":
-                            idRuta = "3";
-                            break;
-
-                        case "Ruta Polka":
-                            idRuta = "151";
-                            break;
-
-                        case "Ruta Pozos":
-                            idRuta = "148";
-                            break;
-
-                        case "Ruta San Juan":
-                            idRuta = "1";
-                            break;
-
-                        case "Ruta San Rafael":
-                            idRuta = "2";
-                            break;
-
-                        case "Ruta San Ramón":
-                            idRuta = "171";
-                            break;
-
-                        case "Ruta Turrubares":
-                            idRuta = "152";
-                            break;
-
-                        case "Ruta Zapatón":
-                            idRuta = "198";
-                            break;
-
-                        default:
-                            break;
                     }
-
-                    cargarDatos(idRuta);
-
                 }
             }
-            else
-            {
-                string pidRuta = e.Parameter as string;
 
-                if (!string.IsNullOrWhiteSpace(pidRuta))
-                {
-
-                    cargarDatos(pidRuta);
-
-                }
-            }
-            
         }
 
         private async void getHorariosRutas(string pIdRuta)
@@ -145,6 +151,10 @@ namespace _2CantonWP.View
 
                 List<Horario> lstHorarios = await App.clientMobileService.InvokeApiAsync<List<Horario>>("horarioruta", HttpMethod.Get, new Dictionary<string, string> { { "id", pIdRuta } });
 
+                if (lstHorarios.Count() == 0)
+                {
+                    gridError.Visibility = Visibility.Visible;
+                }
 
                 ObservableCollection<Horario> obcHorario = new ObservableCollection<Horario>();
                 Random random = new Random();
@@ -222,6 +232,11 @@ namespace _2CantonWP.View
             Horario objHorario = e.ClickedItem as Horario;
 
             this.Frame.Navigate(typeof(DescripcionHorario), new RutaHorario() { idRuta = idRuta, idHorario = objHorario.Id });
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos(idRuta);
         }
     }
 }

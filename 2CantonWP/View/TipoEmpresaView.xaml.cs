@@ -37,6 +37,8 @@ namespace _2CantonWP.View
         {
             if (App.NetworkAvailable)
             {
+                gridError.Visibility = Visibility.Collapsed;
+
                 //Hay conexión a Internet
                 progressRing.IsActive = true;
                 getRutas();
@@ -47,6 +49,8 @@ namespace _2CantonWP.View
                 //No hay conexión a Internet
                 MessageDialog info = new MessageDialog("Verfique la conexión a Internet");
                 await info.ShowAsync();
+
+                gridError.Visibility = Visibility.Visible;
             }
         }
 
@@ -60,6 +64,11 @@ namespace _2CantonWP.View
                 IMobileServiceTableQuery<TipoEmpresa> query = tipoEmpresaTable.OrderBy(e => e.Nombre);
 
                 IEnumerable<TipoEmpresa> lstTipoEmpresa = await query.ToListAsync();
+
+                if (lstTipoEmpresa.Count() == 0)
+                {
+                    gridError.Visibility = Visibility.Visible;
+                }
 
                 lstvRutas.ItemsSource = lstTipoEmpresa;
                 progressRing.IsActive = false;
@@ -85,6 +94,11 @@ namespace _2CantonWP.View
         {
             TipoEmpresa objEmpresa = e.ClickedItem as TipoEmpresa;
             this.Frame.Navigate(typeof(Empresas), objEmpresa.Id);
+        }
+
+        private void btnRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            cargarDatos();
         }
     }
 }
