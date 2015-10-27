@@ -44,5 +44,8 @@ namespace _2CantonWP.Model
 
         [JsonProperty(PropertyName = "urlimagen")]
         public string UrlImagen { get; set; }
+
+        [JsonProperty(PropertyName = "visible")]
+        public bool Visible { get; set; }
     }
 }

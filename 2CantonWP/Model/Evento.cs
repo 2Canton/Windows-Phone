@@ -24,6 +24,10 @@ namespace _2CantonWP.Model
         [JsonProperty(PropertyName = "fecha")]
         public string Fecha { get; set; }
 
+
+        [JsonProperty(PropertyName = "fecha_aux")]
+        public DateTime FechaAux { get; set; }
+
         [JsonProperty(PropertyName = "hora")]
         public string Hora { get; set; }
 
@@ -47,5 +51,8 @@ namespace _2CantonWP.Model
 
         [JsonProperty(PropertyName = "website")]
         public string WebSite { get; set; }
+
+        [JsonProperty(PropertyName = "visible")]
+        public bool Visible { get; set; }
     }
 }

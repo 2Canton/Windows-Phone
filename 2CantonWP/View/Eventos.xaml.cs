@@ -67,7 +67,7 @@ namespace _2CantonWP.View
             try
             {
                 IMobileServiceTable<Model.Evento> empresaTable = App.clientMobileService.GetTable<Model.Evento>();
-                IMobileServiceTableQuery<Model.Evento> query = empresaTable.Where(e => e.IdTipoEvento == pIdTipoEvento).OrderBy(e => e.Nombre);
+                IMobileServiceTableQuery<Model.Evento> query = empresaTable.Where(e => e.IdTipoEvento == pIdTipoEvento && e.Visible == true).OrderBy(e => e.FechaAux);
 
                 IEnumerable<Model.Evento> lstRutas = await query.ToListAsync();
 

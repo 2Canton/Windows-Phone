@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:m3="http://schemas.microsoft.com/appx/2014/manifest" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest">
-  <Identity Name="15959CarlosCastroBrenes.2Canton" Publisher="CN=64D74080-9716-438D-99E4-81163AC7B5A7" Version="1.1.0.0" />
-  <mp:PhoneIdentity PhoneProductId="e85df81d-6bf0-4412-a02b-6883f81c42ba" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Identity Name="15959CarlosCastroBrenes.MiPuribus" Publisher="CN=64D74080-9716-438D-99E4-81163AC7B5A7" Version="2.1.0.5" />
+  <mp:PhoneIdentity PhoneProductId="104afefc-9116-48d7-82d3-54e7cd41a270" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>2Canton</DisplayName>
+    <DisplayName>Mi Puribus</DisplayName>
     <PublisherDisplayName>Carlos Castro Brenes</PublisherDisplayName>
-    <Logo>Assets\StoreLogo.png</Logo>
+    <Logo>Assets\logo50.png</Logo>
   </Properties>
   <Prerequisites>
     <OSMinVersion>6.3.1</OSMinVersion>
@@ -16,10 +16,13 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="_2CantonWP.App">
-      <m3:VisualElements DisplayName="2Canton" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="2CantonWP" ForegroundText="light" BackgroundColor="transparent">
-        <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
+      <m3:VisualElements DisplayName="Mi Puribus" Square150x150Logo="Assets\logo150.png" Square44x44Logo="Assets\logo44.png" Description="2CantonWP" ForegroundText="light" BackgroundColor="#2d89ef">
+        <m3:DefaultTile Wide310x150Logo="Assets\logo310.png" Square71x71Logo="Assets\logo71.png">
         </m3:DefaultTile>
-        <m3:SplashScreen Image="Assets\SplashScreen.png" />
+        <m3:SplashScreen Image="Assets\logo480.png" />
+        <m3:InitialRotationPreference>
+          <m3:Rotation Preference="portrait" />
+        </m3:InitialRotationPreference>
       </m3:VisualElements>
     </Application>
   </Applications>

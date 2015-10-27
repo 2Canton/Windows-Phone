@@ -51,7 +51,7 @@
                         Opacity="0.7">
 
                         <Grid
-                            Width="400"
+                            Width="360"
                             Height="Auto" >
 
                             <Grid.ColumnDefinitions>
@@ -78,59 +78,42 @@
                                     <RowDefinition />
                                     <RowDefinition />
                                     <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
                                 </Grid.RowDefinitions>
 
                                 <TextBlock 
                                     Grid.Column="1"
                                     Grid.Row="0"
                                     Text="{Binding Nombre}" 
-                                    TextTrimming="WordEllipsis"
                                     TextWrapping="Wrap"
                                     FontSize="18"/>
-                                <Grid
-                                     Grid.Column="1"
-                                     Grid.Row="1"
-                                     Grid.RowSpan="2">
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-
+                               
 
                                     <TextBlock 
-                                        Grid.Column="0"
-                                        Grid.Row="0"
+                                        Grid.Row="2"
                                         TextTrimming="WordEllipsis"
                                         TextWrapping="Wrap"                             
-                                        FontSize="13" > 
+                                        FontSize="16" > 
                                         <Run Text="Fecha: " />
                                         <Run Text="{Binding Path=Fecha}" />
                                     </TextBlock>
 
                                     <TextBlock 
-                                        Grid.Column="1"
-                                        Grid.Row="0"
+                                        Grid.Row="3"
                                         TextTrimming="WordEllipsis"
                                         TextWrapping="Wrap"                             
-                                        FontSize="13"  >
+                                        FontSize="16"  >
                                         <Run Text="Hora: " />
                                         <Run Text="{Binding Path=Hora}" />
                                     </TextBlock>
 
                                     <TextBlock 
-                                        Grid.ColumnSpan="2"
-                                        Grid.Column="0"
-                                        Grid.Row="1"
+                                        Grid.Row="4"
                                         TextTrimming="WordEllipsis"
                                         TextWrapping="Wrap"
-                                        FontSize="13">  
+                                        FontSize="16">  
                             
                                         <Run Text="Costo: " />
                                         <Run Text="{Binding Path=Costo}" />
@@ -138,17 +121,16 @@
                                     </TextBlock>
 
                                     <TextBlock 
-                                        Grid.ColumnSpan="2"
-                                        Grid.Column="0"
-                                        Grid.Row="2"
+                                        Margin="0,10,0,0"
+                                        Grid.Row="5"
                                         TextTrimming="WordEllipsis"
                                         TextWrapping="Wrap"
-                                        FontSize="13"
+                                        FontSize="16"
                                         Text="{Binding Descripcion}">  
 
                                     </TextBlock>
 
-                                </Grid>
+                               
                                 
                             </Grid>
 
