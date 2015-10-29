@@ -57,5 +57,7 @@
             </ScrollViewer>
         </Border>
 
+        <MediaElement x:Name="feedbackMediaElement"/>
+
     </Grid>
 </Page>

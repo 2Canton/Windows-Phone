@@ -22,6 +22,8 @@ namespace _2CantonWP.View
     /// </summary>
     public sealed partial class Historia : Page
     {
+        private Windows.Media.SpeechSynthesis.SpeechSynthesizer speechSynthesizer;
+
         public Historia()
         {
             this.InitializeComponent();
@@ -42,8 +44,29 @@ namespace _2CantonWP.View
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
+            try
+            {
+               
+                this.speechSynthesizer = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+
+                var voicesInstalled = from voiceInformation in Windows.Media.SpeechSynthesis.SpeechSynthesizer.AllVoices select voiceInformation;
+
+                if (voicesInstalled.Count() > 0)
+                {
+                    var voiceInformation = voicesInstalled.ElementAt(0) as Windows.Media.SpeechSynthesis.VoiceInformation;
+                    this.speechSynthesizer.Voice = voiceInformation;
+                    var stream = await this.speechSynthesizer.SynthesizeTextToStreamAsync(string.Format("Historia de Puriscal {0}" + txtvHistoria.Text));
+                    feedbackMediaElement.SetSource(stream, stream.ContentType);
+                    feedbackMediaElement.Play();
+                }
+            }
+            catch (Exception exception)
+            {
+                var messageDialog = new Windows.UI.Popups.MessageDialog(exception.Message, "Exception");
+                messageDialog.ShowAsync().GetResults();
+            }
         }
     }
 }
