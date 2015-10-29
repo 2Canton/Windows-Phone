@@ -9,6 +9,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Email;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechRecognition;
+using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,6 +29,18 @@ namespace _2CantonWP
     public sealed partial class MainPage : Page
     {
         ObservableCollection<Opcion> obcOpciones = new ObservableCollection<Opcion>();
+
+        Dictionary<string, string> imageFiles;
+
+        // The object for controlling the speech synthesis engine (voice).
+        SpeechSynthesizer synthesizer;
+        SpeechRecognizer recognizer;
+
+        // The media object for controlling and playing audio.
+        MediaElement mediaplayer;
+
+        bool isNew = true;
+        bool recoEnabled = false;
 
         public MainPage()
         {
@@ -54,7 +68,12 @@ namespace _2CantonWP
         {
             Opcion objOpcion = e.ClickedItem as Opcion;
 
-            switch (objOpcion.Id)
+            navegarVista(objOpcion.Id);
+        }
+
+        private void navegarVista(int pId)
+        {
+            switch (pId)
             {
                 case 0:
                     this.Frame.Navigate(typeof(Historia));
@@ -101,7 +120,6 @@ namespace _2CantonWP
                     break;
             }
         }
-
 
         private async void EnviarEmail()
         {
@@ -151,17 +169,103 @@ namespace _2CantonWP
         /// </summary>
         /// <param name="e">Event data that describes how this page was reached.
         /// This parameter is typically used to configure the page.</param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+            try
+            {
+                // Create the speech recognizer and speech synthesizer objects. 
+                if (this.synthesizer == null)
+                {
+                    synthesizer = new SpeechSynthesizer();
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+                    //Retrieve the first female voice
+                    synthesizer.Voice = SpeechSynthesizer.AllVoices
+                        .First(i => (i.Gender == VoiceGender.Female && i.Description.Contains("Spain")));
+
+                    mediaplayer = new MediaElement();
+                }
+                if (this.recognizer == null)
+                {
+                    recognizer = new SpeechRecognizer();
+                }
+                // Set up a list of pet animals to recognize.
+                // Add a list constraint to the recognizer.
+                string[] animals = { "Historia", "Rutas", "Sitios de interés", "Eventos", "Religión" };
+                var listConstraint = new Windows.Media.SpeechRecognition.SpeechRecognitionListConstraint(animals, "OptionPick");
+                recognizer.UIOptions.ExampleText = @"Ejemplo. ""Historia"", ""Rutas"", ""Sitios de interés"", ""Eventos"", ""Religión""";
+                recognizer.Constraints.Add(listConstraint);
+
+                // Compile the constraint.
+                await recognizer.CompileConstraintsAsync();
+            }
+            catch (Exception err)
+            {
+                
+            }
         }
 
+        private async void btnMicrophone_Click(object sender, RoutedEventArgs e)
+        {
+           
 
+            Windows.Media.SpeechRecognition.SpeechRecognitionResult speechRecognitionResult = await recognizer.RecognizeAsync();
+            // If successful, display the recognition result.
+            if (speechRecognitionResult.Status == Windows.Media.SpeechRecognition.SpeechRecognitionResultStatus.Success)
+            {
+                
+                
+
+                string feedback = "";
+            
+                    feedback = "Buscando " + speechRecognitionResult.Text;
+
+
+
+                    ReadText(feedback);
+                    switch (speechRecognitionResult.Text)
+                    {
+                        case "Historia":
+                            navegarVista(0);
+                            break;
+
+                        case "Rutas":
+                            navegarVista(1);
+                            break;
+
+                        case "Sitios de interés":
+                            navegarVista(2);
+                            break;
+
+                        case "Eventos":
+                            navegarVista(3);
+                            break;
+
+                        case "Religión":
+                            navegarVista(4);
+                            break;
+
+                        default:
+                            break;
+                    }
+                
+
+            }
+           
+            
+        }
+
+        private async void ReadText(string mytext)
+        {
+            //Reminder: You need to enable the Microphone capabilitiy in Windows Phone projects
+            //Reminder: Add this namespace in your using statements
+            //using Windows.Media.SpeechSynthesis;
+
+            // Generate the audio stream from plain text.
+            SpeechSynthesisStream stream = await synthesizer.SynthesizeTextToStreamAsync(mytext);
+
+            // Send the stream to the media object.
+            mediaplayer.SetSource(stream, stream.ContentType);
+            mediaplayer.Play();
+        }
     }
 }

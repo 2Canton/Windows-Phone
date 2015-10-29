@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Media.SpeechSynthesis;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -48,19 +49,20 @@ namespace _2CantonWP.View
         {
             try
             {
-               
-                this.speechSynthesizer = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+              
 
                 var voicesInstalled = from voiceInformation in Windows.Media.SpeechSynthesis.SpeechSynthesizer.AllVoices select voiceInformation;
 
-                if (voicesInstalled.Count() > 0)
-                {
-                    var voiceInformation = voicesInstalled.ElementAt(0) as Windows.Media.SpeechSynthesis.VoiceInformation;
-                    this.speechSynthesizer.Voice = voiceInformation;
-                    var stream = await this.speechSynthesizer.SynthesizeTextToStreamAsync(string.Format("Historia de Puriscal {0}" + txtvHistoria.Text));
+                //Retrieve the first female voice
+                SpeechSynthesizer synthesizer  = new SpeechSynthesizer();
+                synthesizer.Voice = SpeechSynthesizer.AllVoices
+                    .First(i => (i.Gender == VoiceGender.Female && i.Description.Contains("Spain")));
+
+               
+                    var stream = await synthesizer.SynthesizeTextToStreamAsync("Historia de Puriscal " + txtvHistoria.Text);
                     feedbackMediaElement.SetSource(stream, stream.ContentType);
                     feedbackMediaElement.Play();
-                }
+               
             }
             catch (Exception exception)
             {

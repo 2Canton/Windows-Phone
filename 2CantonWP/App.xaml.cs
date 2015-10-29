@@ -41,6 +41,8 @@ namespace _2CantonWP
 
         public static string VCD_PATH = "ms-appx:///Assets/vcdUserInput.xml";
 
+        public static uint HResultPrivacyStatementDeclined = 0x80045509;
+
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

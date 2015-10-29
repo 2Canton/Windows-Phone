@@ -69,4 +69,12 @@
         -->
 
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton x:Name="btnMicrophone" Label="Buscar" Icon="Microphone"  Click="btnMicrophone_Click" />
+            
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>
