@@ -178,6 +178,9 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton x:Name="btnRefresh" Label="Actualizar" Icon="Refresh"  Click="btnRefresh_Click" />
+            <AppBarButton x:Name="btnSpeech" Label="Reproducir" Icon="Play"  Click="btnSpeech_Click" />
+            <AppBarButton x:Name="btnSpeechStop" Label="Detener" Icon="Stop"  Click="btnSpeechStop_Click" />
+
         </CommandBar>
     </Page.BottomAppBar>
 

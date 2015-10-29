@@ -27,8 +27,10 @@ namespace _2CantonWP.View
     public sealed partial class Eventos : Page
     {
 
-        string idTipoEventos;
+        ParametroAux objParametro = new ParametroAux();
         private Windows.Media.SpeechSynthesis.SpeechSynthesizer speechSynthesizer;
+
+        IEnumerable<Model.Evento> lstRutas;
 
         public Eventos()
         {
@@ -37,7 +39,7 @@ namespace _2CantonWP.View
 
         private async void cargarDatos(string pIdTipoEmpresa)
         {
-            idTipoEventos = pIdTipoEmpresa;
+            objParametro.Id = pIdTipoEmpresa;
 
             if (App.NetworkAvailable)
             {
@@ -70,7 +72,7 @@ namespace _2CantonWP.View
                 IMobileServiceTable<Model.Evento> empresaTable = App.clientMobileService.GetTable<Model.Evento>();
                 IMobileServiceTableQuery<Model.Evento> query = empresaTable.Where(e => e.IdTipoEvento == pIdTipoEvento && e.Visible == true).OrderBy(e => e.FechaAux);
 
-                IEnumerable<Model.Evento> lstRutas = await query.ToListAsync();
+                lstRutas = await query.ToListAsync();
 
                 if (lstRutas.Count() == 0)
                 {
@@ -79,8 +81,18 @@ namespace _2CantonWP.View
                 }
 
 
+                if (objParametro.startMediaPlayer)
+                {
+                    startTextToSpeech();
+                }
+
                 lstvRutas.ItemsSource = lstRutas;
                 progressRing.IsActive = false;
+
+
+                
+
+
             }
             catch (Exception)
             {
@@ -89,6 +101,43 @@ namespace _2CantonWP.View
             }
 
         }
+
+        private async void startTextToSpeech()
+        {
+            try
+            {
+
+                this.speechSynthesizer = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
+
+                var voicesInstalled = from voiceInformation in Windows.Media.SpeechSynthesis.SpeechSynthesizer.AllVoices select voiceInformation;
+
+                if (voicesInstalled.Count() > 0)
+                {
+                    var voiceInformation = voicesInstalled.ElementAt(0) as Windows.Media.SpeechSynthesis.VoiceInformation;
+                    this.speechSynthesizer.Voice = voiceInformation;
+
+                    string mensajeLeer = "";
+                    if(lstRutas.Count() != 0)
+                    {
+                        mensajeLeer = "Información de eventos " + lstRutas.ElementAt(0).Descripcion;
+                    }
+                    else
+                    {
+                        mensajeLeer = "Aún no hay eventos en esta categoría";
+                    }
+
+                    var stream = await this.speechSynthesizer.SynthesizeTextToStreamAsync(mensajeLeer);
+                    feedbackMediaElement.SetSource(stream, stream.ContentType);
+                    feedbackMediaElement.Play();
+                }
+            }
+            catch (Exception exception)
+            {
+                var messageDialog = new Windows.UI.Popups.MessageDialog(exception.Message, "Exception");
+                messageDialog.ShowAsync().GetResults();
+            }
+        }
+    
 
         /// <summary>
         /// Invoked when this page is about to be displayed in a Frame.
@@ -101,7 +150,7 @@ namespace _2CantonWP.View
 
             if (objParametroAux != null)
             {
-
+                objParametro = objParametroAux;
                 cargarDatos(objParametroAux.Id);
 
             }
@@ -114,7 +163,17 @@ namespace _2CantonWP.View
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
-            cargarDatos(idTipoEventos);
+            cargarDatos(objParametro.Id);
+        }
+
+        private void btnSpeech_Click(object sender, RoutedEventArgs e)
+        {
+            startTextToSpeech();
+        }
+
+        private void btnSpeechStop_Click(object sender, RoutedEventArgs e)
+        {
+            feedbackMediaElement.Stop();
         }
     }
 }
