@@ -96,7 +96,9 @@ namespace _2CantonWP.View
         private void lstvRutas_ItemClick(object sender, ItemClickEventArgs e)
         {
             TipoEvento objEmpresa = e.ClickedItem as TipoEvento;
-            this.Frame.Navigate(typeof(Eventos), objEmpresa.Id);
+            ParametroAux objParametroAux = new ParametroAux() { Id = objEmpresa.Id, startMediaPlayer = false };
+
+            this.Frame.Navigate(typeof(Eventos), objParametroAux);
         }
 
         private void btnRefresh_Click(object sender, RoutedEventArgs e)

@@ -92,6 +92,7 @@
     <Compile Include="Helpers\VCDHelper.cs" />
     <Compile Include="Model\Evento.cs" />
     <Compile Include="Model\Noticia.cs" />
+    <Compile Include="Model\ParametroAux.cs" />
     <Compile Include="Model\TipoEvento.cs" />
     <Compile Include="Model\TipoReligion.cs" />
     <Compile Include="Resources\AppResources.Designer.cs">

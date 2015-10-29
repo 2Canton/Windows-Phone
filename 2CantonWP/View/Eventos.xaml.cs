@@ -28,6 +28,7 @@ namespace _2CantonWP.View
     {
 
         string idTipoEventos;
+        private Windows.Media.SpeechSynthesis.SpeechSynthesizer speechSynthesizer;
 
         public Eventos()
         {
@@ -96,12 +97,12 @@ namespace _2CantonWP.View
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string idTipoEvento = e.Parameter as string;
+            ParametroAux objParametroAux = e.Parameter as ParametroAux;
 
-            if (!string.IsNullOrWhiteSpace(idTipoEvento))
+            if (objParametroAux != null)
             {
 
-                cargarDatos(idTipoEvento);
+                cargarDatos(objParametroAux.Id);
 
             }
         }

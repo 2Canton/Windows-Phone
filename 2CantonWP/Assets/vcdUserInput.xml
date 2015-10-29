@@ -2,15 +2,9 @@
 
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
   <CommandSet xml:lang="es-es">
-    <CommandPrefix>Asistente</CommandPrefix>
-    <Example> Eventos </Example>
+    <CommandPrefix>Mi Puribus</CommandPrefix>
+    <Example> Eventos de </Example>
 
-    <Command Name="Eventos">
-      <Example>Eventos</Example>
-      <ListenFor>eventos</ListenFor>
-      <Feedback>Buscando eventos...</Feedback>
-      <Navigate Target="Evento.xaml" />
-    </Command>
     
     <Command Name="TipoEventos">
       <Example>Eventos de </Example>
@@ -27,11 +21,14 @@
     </Command>
     
     <PhraseList Label="tipoEventos">
-      <Item> Deportes </Item>
       <Item> Cultura </Item>
+      <Item> Deportes </Item>
       <Item> Educación </Item>
       <Item> Entretenimiento </Item>
       <Item> Música </Item>
+      <Item> Otro </Item>
+      <Item> Religión </Item>
+      <Item> Turismo </Item>
     </PhraseList>
     
     <PhraseList Label="rutas">

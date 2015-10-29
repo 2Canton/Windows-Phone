@@ -171,6 +171,8 @@
 
         </Grid>
 
+        <MediaElement x:Name="feedbackMediaElement"/>
+
     </Grid>
 
     <Page.BottomAppBar>

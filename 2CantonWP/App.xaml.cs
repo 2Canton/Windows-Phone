@@ -1,4 +1,5 @@
-﻿using DemoCortana.Helpers;
+﻿using _2CantonWP.Model;
+using DemoCortana.Helpers;
 using Microsoft.WindowsAzure.MobileServices;
 using System;
 using System.Collections.Generic;
@@ -168,15 +169,57 @@ namespace _2CantonWP
                 // vamos a buscar cuál fue el comando que se dijo
                 string voiceCommandName = vcArgs.Result.RulePath.FirstOrDefault();
                 string paramenter = vcArgs.Result.Text;
+
+                ParametroAux objParamentro = new ParametroAux();
+
                 switch (voiceCommandName)
                 {
-                    case "Eventos":
-                        rootFrame.Navigate(typeof(View.Evento), vcArgs.Result);
-                        break;
 
                         // vista de un tipo de evento determinado
                     case "TipoEventos":
-                        rootFrame.Navigate(typeof(View.Eventos), vcArgs.Result);
+
+
+                        // buscamos cuál tipo de evento está buscando
+                        switch (vcArgs.Result.Text)
+                        {
+                            case "Eventos de Cultura":
+                                objParamentro.Id = "3";
+                                break;
+
+                            case "Eventos de Deportes":
+                                objParamentro.Id = "4";
+                                break;
+
+                            case "Eventos de Educación":
+                                objParamentro.Id = "6";
+                                break;
+
+                            case "Eventos de Entretenimiento":
+                                objParamentro.Id = "2";
+                                break;
+
+                            case "Eventos de Música":
+                                objParamentro.Id = "1";
+                                break;
+
+                            case "Eventos de Otro":
+                                objParamentro.Id = "7";
+                                break;
+
+                            case "Eventos de Religión":
+                                objParamentro.Id = "8";
+                                break;
+
+                            case "Turismo":
+                                objParamentro.Id = "5";
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        objParamentro.startMediaPlayer = true;
+                        rootFrame.Navigate(typeof(View.Eventos), objParamentro);
                         break;
 
                     case "Rutas":
