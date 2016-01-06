@@ -17,5 +17,8 @@ namespace _2CantonWP.Model
 
         [JsonProperty(PropertyName = "urlimagen")]
         public string UrlImagen { get; set; }
+
+        [JsonProperty(PropertyName = "cantidad_empresas")]
+        public int Cantidad { get; set; }
     }
 }

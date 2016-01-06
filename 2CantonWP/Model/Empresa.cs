@@ -19,10 +19,10 @@ namespace _2CantonWP.Model
         public string Direccion { get; set; }
           
         [JsonProperty(PropertyName = "longitud")]
-        public float Longitud { get; set; }
+        public double Longitud { get; set; }
 
         [JsonProperty(PropertyName = "latitud")]
-        public float Latitud { get; set; }
+        public double Latitud { get; set; }
 
         [JsonProperty(PropertyName = "telefonoprincipal")]
         public string TelefonoPrincipal { get; set; }

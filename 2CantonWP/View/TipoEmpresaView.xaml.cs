@@ -60,10 +60,8 @@ namespace _2CantonWP.View
 
             try
             {
-                IMobileServiceTable<TipoEmpresa> tipoEmpresaTable = App.clientMobileService.GetTable<TipoEmpresa>();
-                IMobileServiceTableQuery<TipoEmpresa> query = tipoEmpresaTable.OrderBy(e => e.Nombre);
-
-                IEnumerable<TipoEmpresa> lstTipoEmpresa = await query.ToListAsync();
+              
+                IEnumerable<TipoEmpresa> lstTipoEmpresa = await App.clientMobileService.InvokeApiAsync<IEnumerable<TipoEmpresa>>("companies", System.Net.Http.HttpMethod.Get, null);
 
                 if (lstTipoEmpresa.Count() == 0)
                 {
@@ -73,7 +71,7 @@ namespace _2CantonWP.View
                 lstvRutas.ItemsSource = lstTipoEmpresa;
                 progressRing.IsActive = false;
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
 

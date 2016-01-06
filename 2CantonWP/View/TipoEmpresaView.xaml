@@ -22,6 +22,7 @@
             Grid.Row="0"
             Text="Puriscal"
             Style="{ThemeResource HeaderTextBlockStyle}"
+            Foreground="White"
             Margin="15,0,0,0"/>
 
         <ProgressRing 
@@ -33,7 +34,7 @@
 
         <ListView 
             x:Name="lstvRutas" 
-            ItemTemplate="{StaticResource itemLista}"
+            ItemTemplate="{StaticResource itemListaCantidad}"
             Grid.Row="1"
             Margin="0,20" 
             IsItemClickEnabled="True" ItemClick="lstvRutas_ItemClick" />
@@ -62,6 +63,7 @@
                 TextWrapping="Wrap"
                 Height="Auto"
                 TextAlignment="Center"
+                Foreground="White"
                 Text="¡Vaya ha ocurrido un error al cargar, verifica la conexión a internet e intenta de nuevo" FontSize="21.333"  />
 
 

@@ -21,6 +21,7 @@
         <TextBlock
             Grid.Row="0"
             Text="Puriscal"
+            Foreground="White"
             Style="{ThemeResource HeaderTextBlockStyle}"
             Margin="15,0,0,0"/>
 

@@ -144,9 +144,24 @@ namespace _2CantonWP.View
         private async void imgvMapa_Tapped(object sender, TappedRoutedEventArgs e)
         {
 
+            // Get the values required to specify the destination.
+            string latitude = "9.8436";
+            string longitude = "-84.314247";
+            string name = "Santiago, Costa Rica";
+
             // Assemble the Uri to launch.
-            Uri uri = new Uri("ms-walk-to:?destination.latitude=" + objEmpresaAux.Latitud +
+            Uri uri = new Uri("ms-drive-to:?destination.latitude=" + latitude +
+                "&destination.longitude=" + longitude + "&destination.name=" + name);
+
+            Uri uriAux = new Uri("ms-drive-to:?destination.latitude=" + objEmpresaAux.Latitud +
+               "&destination.longitude=" + objEmpresaAux.Longitud + "&destination.name=Santiago, Costa Rica");
+
+
+            /*
+            // Assemble the Uri to launch.
+            Uri uri = new Uri("ms-drive-to:?destination.latitude=" + objEmpresaAux.Latitud +
                 "&destination.longitude=" + objEmpresaAux.Longitud + "&destination.name=Santiago, Costa Rica");
+                */
             // The resulting Uri is: "ms-drive-to:?destination.latitude=47.6451413797194
             //  &destination.longitude=-122.141964733601&destination.name=Redmond, WA")
 

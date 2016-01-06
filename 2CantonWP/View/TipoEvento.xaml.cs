@@ -60,10 +60,9 @@ namespace _2CantonWP.View
 
             try
             {
-                IMobileServiceTable<TipoEvento> tipoEventoTable = App.clientMobileService.GetTable<TipoEvento>();
-                IMobileServiceTableQuery<TipoEvento> query = tipoEventoTable.OrderBy(e => e.Nombre);
 
-                IEnumerable<TipoEvento> lstTipoEvento = await query.ToListAsync();
+
+                IEnumerable<TipoEvento> lstTipoEvento = await App.clientMobileService.InvokeApiAsync<IEnumerable<TipoEvento>>("events", System.Net.Http.HttpMethod.Get, null);
 
                 if (lstTipoEvento.Count() == 0)
                 {

@@ -6,9 +6,6 @@
 
     <Application.Resources>
 
-
-        
-        
         <DataTemplate x:Key="itemLista">
 
             <Border 
@@ -20,24 +17,88 @@
                 Opacity="0.6">
 
                 <StackPanel 
-                    Orientation="Horizontal" 
+                    Orientation="Horizontal"
                     Height="130" >
 
+                   
                     <Image 
+                       Margin="10,0,10,0"
+                        Grid.Column="0"
                         Height="50" 
                         Width="50" 
                         Source="{Binding UrlImagen}" 
-                        Stretch="UniformToFill"
-                        Margin="10,0,10,0"/>
+                        Stretch="UniformToFill"/>
 
                     <TextBlock 
+                        Grid.Column="1"
                         Text="{Binding Nombre}" 
                         Width="350" 
                         TextTrimming="WordEllipsis"
                         VerticalAlignment="Center" 
+                        Foreground="White"
                         FontSize="18"/>
 
                 </StackPanel>
+            </Border>
+        </DataTemplate>
+
+
+        <DataTemplate x:Key="itemListaCantidad">
+
+            <Border 
+                Width="Auto" 
+                Height="Auto" 
+                Margin="5"
+                Background="Black" 
+                CornerRadius="15"  
+                Opacity="0.6">
+
+                <Grid 
+                    Height="130" >
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image 
+                       
+                        Margin="10,10,10,0"
+                        Grid.Column="0"
+                        Height="50" 
+                        Width="50" 
+                        Source="{Binding UrlImagen}" 
+                        Stretch="UniformToFill"/>
+
+                    <TextBlock 
+                        Grid.Column="1"
+                        Text="{Binding Nombre}" 
+                        Width="350" 
+                        TextTrimming="WordEllipsis"
+                        VerticalAlignment="Center" 
+                        Foreground="White"
+                        FontSize="18"/>
+
+                    <TextBlock 
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Width="350" 
+                        TextTrimming="WordEllipsis"
+                        VerticalAlignment="Center" 
+                        Foreground="White"
+                        FontSize="18">
+
+                        <Run Text="Cantidad: " />
+                        <Run Text="{Binding Cantidad}" />
+                        
+                    </TextBlock>
+
+                </Grid>
             </Border>
         </DataTemplate>
 
@@ -88,6 +149,7 @@
                                     Text="{Binding Fecha}" 
                                     TextTrimming="WordEllipsis"
                                     FontSize="18"
+                            Foreground="White"
                                 Padding="0,0,15,0"
                         TextAlignment="Right"/>
 
@@ -95,6 +157,7 @@
                                     Grid.Row="1"
                                     Text="{Binding Nombre}" 
                              TextWrapping="Wrap"
+                            Foreground="White"
                             FontWeight="Bold"
                                     TextTrimming="WordEllipsis"
                                     FontSize="18"/>
@@ -103,6 +166,7 @@
                                     Grid.Row="2"
                                     Text="{Binding Descripcion}" 
                                     TextTrimming="WordEllipsis"
+                            Foreground="White"
                                     TextWrapping="Wrap"
                                     FontSize="18"/>
 
@@ -113,6 +177,7 @@
                                         Grid.Row="3"
                                         TextTrimming="WordEllipsis"
                                         TextWrapping="Wrap"
+                            Foreground="White"
                                         FontSize="13"
                             
                                 Padding="0,15,0,15">  
